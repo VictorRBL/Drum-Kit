@@ -1,13 +1,13 @@
 let drumButtons = document.querySelectorAll(".drum");
 
 for (let i = 0; i < drumButtons.length; i++) {
-  drumButtons[i].addEventListener("click", function () {
+  drumButtons[i].addEventListener("click", () => {
     playSound(drumButtons[i].textContent);
     keyPressed(drumButtons[i].textContent);
   });
 }
 
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", (event) => {
   playSound(event.key);
   keyPressed(event.key);
 });
@@ -15,7 +15,7 @@ document.addEventListener("keydown", function (event) {
 function keyPressed(key) {
   let keySelector = document.querySelector(`.${key}`).classList;
   keySelector.add("pressed");
-  // setTimeout(keySelector.remove("pressed"), 1000);
+  setTimeout(() => keySelector.remove("pressed"), 100);
 }
 function playSound(key) {
   switch (key) {
